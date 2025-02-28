@@ -3,4 +3,4 @@
 [胡捷-orcalia](https://github.com/orcalia)  
 [苟韦豪-HimenoKoutarou](https://github.com/HimenoKoutarou)  
 [刘冬-gnoduil](https://github.com/gnoduil)  
-[胡捷](https://github.com/orcalia)  
+[胡捷-orcalia](https://github.com/orcalia)  
