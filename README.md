@@ -4,8 +4,8 @@ Goby 是一个基于微服务架构的现代化电商平台，采用 Go 语言�
 
 ## 项目结构
 ```
-bake-end/
-├── app/                    # 后端应用
+goby/
+├── app/                   # 后端应用
 │   ├── clients/           # 客户端代码
 │   ├── common/            # 公共代码
 │   ├── consts/            # 常量定义
@@ -16,7 +16,7 @@ bake-end/
 ├── docs/                  # 项目文档
 └── delpoy/                # docker部署
 
-front-end/                 # 前端应用
+goby-frontend/                 # 前端应用
 ├── app/                   # Next.js应用
 ├── components/            # React组件
 ├── public/                # 静态资源
@@ -35,7 +35,7 @@ front-end/                 # 前端应用
 ### 后端启动
 1. 安装依赖
 ```bash
-
+cd goby
 go mod tidy
 ```
 
@@ -44,15 +44,21 @@ go mod tidy
 # 修改 config/config.yaml 中的数据库配置
 ```
 
-3. 启动服务
+3. 启动docker
 ```bash
-go run main.go
+cd delpoy
+docker compose-up
+```
+
+4. 启动服务
+```bash
+make run svc=...
 ```
 
 ### 前端启动
 1. 安装依赖
 ```bash
-cd gobuy-frontend
+cd goby-frontend
 npm install
 ```
 
