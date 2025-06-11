@@ -13,14 +13,15 @@ goby/
 │   ├── rpc/               # RPC服务
 │   ├── services/          # 业务服务
 │   └── utils/             # 工具函数
-├── docs/                  # 项目文档
 └── delpoy/                # docker部署
 
-goby-frontend/                 # 前端应用
+goby-frontend/             # 前端应用
 ├── app/                   # Next.js应用
 ├── components/            # React组件
 ├── public/                # 静态资源
 └── styles/                # 样式文件
+
+docs/                      # 项目文档
 
 ```
 
