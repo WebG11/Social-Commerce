@@ -165,7 +165,7 @@ ab -n 1000 -c 100 http://localhost:8080/api/products
 zap-cli quick-scan --self-contained --start-options "-config api.disablekey=true" http://localhost:3000
 ```
 
-详细的测试说明请参考 [测试说明文档]([docs/%E6%B5%8B%E8%AF%95%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3.md])。
+详细的测试说明请参考 [测试说明文档](https://github.com/WebG11/Social-Commerce/blob/main/docs/%E6%B5%8B%E8%AF%95%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3.md)。
 
 
 ## 功能特性
