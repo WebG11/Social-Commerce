@@ -1,0 +1,19 @@
+tidb: 
+    dsn: "%s:%s@tcp(%s:%s)/gobuy?tls=tidb&charset=utf8mb4&parseTime=True&loc=Local"
+    user: <user>
+    password: <password>
+    host: <host>
+    port: 4000
+
+kitex:
+  service: "product"
+  address: ":8882"
+  metrics_port: ":9992"
+  log_level: debug
+  log_file_name: "log/kitex.log"
+  log_max_size: 10
+  log_max_age: 3
+  log_max_backups: 50
+
+registry:
+  registry_address: ["localhost:8500"]  

@@ -1,0 +1,1 @@
+docker run -v D:/code/SPM/goby/tests/security:/zap/wrk/:rw -t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://host.docker.internal:3000 -r zap_report.html

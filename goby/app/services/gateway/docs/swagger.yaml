@@ -1,0 +1,76 @@
+basePath: /
+host: localhost:8888
+info:
+  contact:
+    name: hertz-contrib
+    url: https://github.com/hertz-contrib
+  description: API Doc for user service.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: userservice
+  version: "1.0"
+paths:
+  /admin/block_user:
+    post:
+      consumes:
+      - application/json
+      description: 封禁指定用户/IP
+      produces:
+      - application/json
+      responses: {}
+      summary: 添加黑名单条目
+  /admin/unblock:
+    delete:
+      consumes:
+      - application/json
+      description: 解除封禁
+      produces:
+      - application/json
+      responses: {}
+      summary: 移除黑名单条目
+  /product:
+    delete:
+      consumes:
+      - application/json
+      description: 这是一段Description
+      produces:
+      - application/json
+      responses: {}
+      summary: 这是一段Summary
+    get:
+      consumes:
+      - application/json
+      description: 这是一段Description
+      produces:
+      - application/json
+      responses: {}
+      summary: 这是一段Summary
+    post:
+      consumes:
+      - application/json
+      description: 这是一段Description
+      produces:
+      - application/json
+      responses: {}
+      summary: 这是一段Summary
+    put:
+      consumes:
+      - application/json
+      description: 这是一段Description
+      produces:
+      - application/json
+      responses: {}
+      summary: 这是一段Summary
+  /product/search:
+    get:
+      consumes:
+      - application/json
+      description: 这是一段Description
+      produces:
+      - application/json
+      responses: {}
+      summary: 这是一段Summary
+schemes:
+- http
+swagger: "2.0"

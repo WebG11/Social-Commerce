@@ -1,0 +1,18 @@
+postgres: 
+    dsn: "postgres://%s:%s@%s/gobuy?timezone=Asia/Shanghai"
+    user: <user>
+    password: <password>
+    host: <host>
+
+kitex:
+  service: "user"
+  address: ":8881"
+  metrics_port: ":9991"
+  log_level: debug
+  log_file_name: "log/kitex.log"
+  log_max_size: 10
+  log_max_age: 3
+  log_max_backups: 50
+
+registry:
+  registry_address: ["localhost:8500"]  

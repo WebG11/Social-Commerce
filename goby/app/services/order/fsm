@@ -1,0 +1,92 @@
+package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+
+	"github.com/looplab/fsm"
+)
+
+// Order 表示一个订单
+type Order struct {
+	ID    string
+	State string
+	FSM   *fsm.FSM
+}
+
+// NewOrder 创建一个新订单
+func NewOrder(id string) *Order {
+	order := &Order{
+		ID:    id,
+		State: "pending", // 初始状态为待支付
+	}
+
+	// 初始化状态机
+	order.FSM = fsm.NewFSM(
+		order.State, // 初始状态
+		fsm.Events{
+			// 定义事件和状态转移规则
+			{Name: "pay", Src: []string{"pending"}, Dst: "paid"},
+			{Name: "ship", Src: []string{"paid"}, Dst: "shipped"},
+			{Name: "complete", Src: []string{"shipped"}, Dst: "completed"},
+			{Name: "cancel", Src: []string{"pending", "paid"}, Dst: "cancelled"},
+		},
+		fsm.Callbacks{
+			// 这些key都是约定好的
+			"before_pay": func(_ context.Context, e *fsm.Event) {
+				if order.ID == "order-1" {
+					fmt.Println("不准order-1订单支付,支付失败")
+					e.Cancel()
+					return
+				}
+				fmt.Printf("支付订单 %s,并修改数据库\n", order.ID)
+			},
+			// 状态变化时的回调函数
+			"enter_state": func(_ context.Context, e *fsm.Event) {
+				order.State = e.Dst
+				fmt.Printf("订单 %s 状态从 %s 变为 %s\n", order.ID, e.Src, e.Dst)
+			},
+		},
+	)
+	return order
+}
+
+func main() {
+	// 创建一个新订单
+	order1 := NewOrder("order-1")
+
+	// 触发支付事件，但会失败
+	err := order1.FSM.Event(context.Background(), "pay")
+	if err != nil {
+		fmt.Printf("支付失败: %v\n\n", err)
+	}
+	// 重新换一个订单
+	order := NewOrder("order-2")
+	// 触发支付事件
+	err = order.FSM.Event(context.Background(), "pay")
+	if err != nil {
+		log.Fatalf("支付失败: %v", err)
+	}
+
+	// 触发发货事件
+	err = order.FSM.Event(context.Background(), "ship")
+	if err != nil {
+		log.Fatalf("发货失败: %v", err)
+	}
+
+	// 触发完成事件
+	err = order.FSM.Event(context.Background(), "complete")
+	if err != nil {
+		log.Fatalf("完成失败: %v", err)
+	}
+
+	// 尝试触发取消事件（此时订单已完成，无法取消）
+	err = order.FSM.Event(context.Background(), "cancel")
+	if err != nil {
+		fmt.Printf("取消失败: %v\n", err)
+	}
+
+	// 输出最终状态
+	fmt.Printf("订单 %s 的最终状态是: %s\n", order.ID, order.State)
+}

@@ -1,0 +1,19 @@
+go 1.22.1
+
+use (
+	common
+	consts
+	models
+	rpc
+	utils
+	
+	services/gateway
+	services/user
+	services/order
+	services/agent
+	services/product
+	services/paycallback
+	services/cart
+)
+
+replace github.com/apache/thrift => github.com/apache/thrift v0.13.0

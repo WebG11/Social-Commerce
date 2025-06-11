@@ -1,0 +1,28 @@
+tidb: 
+  dsn: "%s:%s@tcp(%s:%s)/gobuy?tls=tidb&charset=utf8mb4&parseTime=True&loc=Local"
+  user: <user>
+  password: <password>
+  host: <host>
+  port: 4000
+    
+
+alipay:
+  app_id: <app_id>
+  private_key: "<private_key>"
+  server_domain: <server_domain>
+
+hertz:
+  address: ":8280"
+  metrics_port: 8290
+  enable_pprof: true
+  enable_gzip: true
+  enable_access_log: true
+  log_level: info
+  log_file_name: "log/hertz.log"
+  log_max_size: 10
+  log_max_age: 3
+  log_max_backups: 50
+  registry_addr: "localhost:8500"
+
+registry:
+  registry_address: ["localhost:8500"]  

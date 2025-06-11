@@ -1,0 +1,34 @@
+{
+  "Total" : {
+    "transaction" : "Total",
+    "sampleCount" : 5000,
+    "errorCount" : 5000,
+    "errorPct" : 100.0,
+    "meanResTime" : 5.399199999999982,
+    "medianResTime" : 5.0,
+    "minResTime" : 2.0,
+    "maxResTime" : 92.0,
+    "pct1ResTime" : 8.0,
+    "pct2ResTime" : 9.0,
+    "pct3ResTime" : 15.0,
+    "throughput" : 498.9024146876871,
+    "receivedKBytesPerSec" : 113.0325783276791,
+    "sentKBytesPerSec" : 129.11048817601278
+  },
+  "登录请求" : {
+    "transaction" : "登录请求",
+    "sampleCount" : 5000,
+    "errorCount" : 5000,
+    "errorPct" : 100.0,
+    "meanResTime" : 5.399199999999982,
+    "medianResTime" : 5.0,
+    "minResTime" : 2.0,
+    "maxResTime" : 92.0,
+    "pct1ResTime" : 8.0,
+    "pct2ResTime" : 9.0,
+    "pct3ResTime" : 15.0,
+    "throughput" : 498.9024146876871,
+    "receivedKBytesPerSec" : 113.0325783276791,
+    "sentKBytesPerSec" : 129.11048817601278
+  }
+}

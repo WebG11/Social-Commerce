@@ -1,0 +1,44 @@
+version: '3'
+services:
+  jmeter:
+    image: justb4/jmeter:latest
+    volumes:
+      - ./jmeter:/jmeter
+      - ./results:/results
+    command: ["-n", "-t", "/jmeter/performance_test.jmx", "-l", "/results/results.jtl", "-e", "-o", "/results/report"]
+    environment:
+      - JMETER_ARGS=-n -t /jmeter/performance_test.jmx -l /results/results.jtl -e -o /results/report
+    ports:
+      - "8091:8090"
+    networks:
+      - test-network
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3001:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
+    networks:
+      - test-network
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9091:9090"
+    networks:
+      - test-network
+
+networks:
+  test-network:
+    driver: bridge
+
+volumes:
+  grafana-storage: 
